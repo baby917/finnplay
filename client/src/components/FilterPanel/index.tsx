@@ -123,77 +123,81 @@ const FilterPanel = () => {
   );
 
   return (
-    <div className={`filter-panel ${isMobile ? "mobile" : "desktop"}`}>
-      {/* 搜索框 */}
-      <div className="filter-section search-section">
-        <div className="search-box">
-          <input
-            type="text"
-            placeholder="Search"
-            value={searchValue}
-            onChange={handleSearchChange}
-          />
-          <i className="iconfont icon-search" />
+    <div
+      className={`filter-panel-container ${isMobile ? "mobile" : "desktop"}`}
+    >
+      <div className="filter-panel">
+        {/* 搜索框 */}
+        <div className="filter-section search-section">
+          <div className="search-box">
+            <input
+              type="text"
+              placeholder="Search"
+              value={searchValue}
+              onChange={handleSearchChange}
+            />
+            <i className="iconfont icon-search" />
+          </div>
         </div>
-      </div>
 
-      {isMobile && !mobileFiltersVisible && (
-        <div className="show-filter-btn" onClick={handleFilterToggle}>
-          <i className="iconfont icon-caidan" />
-          <span>Show filters</span>
-        </div>
-      )}
-      {((isMobile && mobileFiltersVisible) || !isMobile) && (
-        <div className="filter-section-details">
-          {/* 提供商筛选 */}
-          <div className="filter-section">
-            <div className="section-header">
-              <h3>Providers</h3>
-            </div>
-            {renderButtonGroup(providers, filters.providers, toggleProvider)}
+        {isMobile && !mobileFiltersVisible && (
+          <div className="show-filter-btn" onClick={handleFilterToggle}>
+            <i className="iconfont icon-caidan" />
+            <span>Show filters</span>
           </div>
-
-          {/* 游戏分组筛选 */}
-          <div className="filter-section">
-            <div className="section-header">
-              <h3>Game groups</h3>
-            </div>
-            {renderButtonGroup(groups, filters.groups, toggleGroup)}
-          </div>
-
-          {/* 排序选项 */}
-          <div className="filter-section">
-            <div className="section-header">
-              <h3>Sorting</h3>
-            </div>
-            {renderSortButtons()}
-          </div>
-
-          {/* 列数选择器 */}
-          {!isMobile && (
+        )}
+        {((isMobile && mobileFiltersVisible) || !isMobile) && (
+          <div className="filter-section-details">
+            {/* 提供商筛选 */}
             <div className="filter-section">
               <div className="section-header">
-                <h3>Columns</h3>
+                <h3>Providers</h3>
               </div>
-              {renderColumnButtons()}
+              {renderButtonGroup(providers, filters.providers, toggleProvider)}
             </div>
-          )}
 
-          {/* 统计信息和重置按钮 */}
-          <div className="stats-section">
-            <p>Games amount: {filteredGames.length}</p>
-            <button className={`reset-btn`} onClick={actions.resetFilters}>
-              Reset
-            </button>
-          </div>
-          {isMobile && mobileFiltersVisible && (
-            <div className="hide-filter-btn" onClick={handleFilterToggle}>
-              <i className="iconfont icon-caidan" />
-              <span>Hide filters</span>
+            {/* 游戏分组筛选 */}
+            <div className="filter-section">
+              <div className="section-header">
+                <h3>Game groups</h3>
+              </div>
+              {renderButtonGroup(groups, filters.groups, toggleGroup)}
             </div>
-          )}
-        </div>
-      )}
+
+            {/* 排序选项 */}
+            <div className="filter-section">
+              <div className="section-header">
+                <h3>Sorting</h3>
+              </div>
+              {renderSortButtons()}
+            </div>
+
+            {/* 列数选择器 */}
+            {!isMobile && (
+              <div className="filter-section">
+                <div className="section-header">
+                  <h3>Columns</h3>
+                </div>
+                {renderColumnButtons()}
+              </div>
+            )}
+
+            {/* 统计信息和重置按钮 */}
+            <div className="stats-section">
+              <p>Games amount: {filteredGames.length}</p>
+              <button className={`reset-btn`} onClick={actions.resetFilters}>
+                Reset
+              </button>
+            </div>
+            {isMobile && mobileFiltersVisible && (
+              <div className="hide-filter-btn" onClick={handleFilterToggle}>
+                <i className="iconfont icon-caidan" />
+                <span>Hide filters</span>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
