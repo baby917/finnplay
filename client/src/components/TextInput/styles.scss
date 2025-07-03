@@ -1,0 +1,73 @@
+@use "../../styles/variables" as *;
+
+.input-container {
+  position: relative;
+  margin-bottom: 24px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  height: 64px;
+
+  &.floating {
+    .input-label {
+      top: 12px;
+      left: 16px;
+      font-size: 12px;
+      background: white;
+      color: $title-color;
+    }
+    .text-input {
+      padding: 30px 0px 14px !important;
+    }
+  }
+  .input-label {
+    position: absolute;
+    top: 18px;
+    left: 15px;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    color: #888;
+    background: transparent;
+    z-index: 1;
+  }
+
+  .input-wrapper {
+    position: relative;
+    flex: 1;
+
+    .text-input {
+      width: 100%;
+      padding: 22px 0;
+      font-size: 16px;
+      position: relative;
+      z-index: 0;
+      background: transparent;
+      border: none;
+      &:focus {
+        outline: none;
+        border-color: $title-color;
+      }
+    }
+  }
+  .password-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    padding: 5px;
+    margin-left: 11px;
+
+    &:hover {
+      color: $text-color;
+    }
+
+    &:focus {
+      outline: none;
+      color: $title-color;
+    }
+  }
+}
