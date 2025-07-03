@@ -37,3 +37,8 @@ npm run dev
 cd server
 npm run dev
 ```
+
+### 账号密码
+
+player1:player1
+player2:player2s
