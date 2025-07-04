@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TextInput from "../../components/TextInput";
@@ -17,6 +17,13 @@ const Login = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    if (user.username) {
+      navigate("/games");
+    }
+  }, [navigate]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,

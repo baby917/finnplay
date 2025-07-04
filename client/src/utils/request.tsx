@@ -58,6 +58,7 @@ const apiRequest = <R extends ApiResponse>({
         console.log("err", error);
         if (error.status === 401) {
           window.location.href = "/login";
+          localStorage.clear();
         }
         let label = error.message;
         if (label) {

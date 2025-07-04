@@ -3,7 +3,6 @@ import FilterPanel from "../../components/FilterPanel";
 import useGameStore from "../../store/gameStore";
 import useWindowSize from "../../utils/useWindowSize";
 import apiRequest from "../../utils/request";
-import { ROWS_LIMIT } from "../../constants";
 import type { Game, Group } from "../../types";
 import "./styles.scss";
 
@@ -92,22 +91,19 @@ const GameList = () => {
 
   return (
     <div className={`game-container ${isMobile ? "mobile" : ""}`}>
-      <div
-        className="game-grid"
-        style={{
-          gridTemplateColumns: `repeat(${getGridColumns}, 1fr)`,
-          gridAutoRows: `${
-            isMobile
-              ? "130px"
-              : ROWS_LIMIT[getGridColumns as keyof typeof ROWS_LIMIT]
-          }px`,
-        }}
-      >
-        {filteredGames.map((game) => (
-          <div className="game-card" key={game.id}>
-            <img src={game.cover} alt={game.name} />
-          </div>
-        ))}
+      <div className="game-list">
+        <div
+          className="game-grid"
+          style={{
+            gridTemplateColumns: `repeat(${getGridColumns}, 1fr)`,
+          }}
+        >
+          {filteredGames.map((game) => (
+            <div className="game-card" key={game.id}>
+              <img src={game.cover} alt={game.name} />
+            </div>
+          ))}
+        </div>
       </div>
       <FilterPanel />
     </div>
